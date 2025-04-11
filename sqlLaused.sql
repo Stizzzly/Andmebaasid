@@ -77,3 +77,18 @@ VALUES (4, 4, 'Eesti Keel')
 
 SELECT * FROM opilane;
 DROP TABLE hinne;
+
+--tabel opetaja
+CREATE TABLE opetaja(
+opetajaID int Primary Key identity(1,1),
+nimi varchar(25),
+perenimi varchar(30),
+telefon varchar(20)
+);
+
+ALTER TABLE ryhm ADD opetajaID int;
+
+ALTER TABLE ryhm
+ADD foreign key (opetajaID) references opetaja(opetajaID)
+
+DROP TABLE opetaja;
