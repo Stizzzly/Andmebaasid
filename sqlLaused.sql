@@ -1,9 +1,10 @@
--- SQL Server Managment Stuudio
+-- XAMPP Control Panel (Start Apache, Start MySQL)
 -- Connect to
--- (localdb)\MSSQLLocalDB
+-- localhost
 -- Authentification: Windows Auth - admini õigused localhosttis
--- Authentification: SQL Server Auth - varem loodud kasutajad
--- New Query
+-- kasutajanimi - root
+-- salasõna - ei ole
+-- SQL: 
 
 -- 1 tund
 
