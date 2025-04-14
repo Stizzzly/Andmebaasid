@@ -33,6 +33,7 @@ VALUES ('Mark', 'Levin', '2000-12-5', 'Tallinn', 1),
 ('Mark', 'Markov', '2000-11-6', 'Tallinn', 1)
 
 -- 2 tund
+  
 --tabel Rühm
 CREATE TABLE ryhm(
 ryhmID int not null primary key identity(1,1),
@@ -91,3 +92,24 @@ ALTER TABLE ryhm
 ADD foreign key (opetajaID) references opetaja(opetajaID)
 
 DROP TABLE opetaja;
+
+-- tund 3
+CREATE DATABASE posnoi;
+use posnoi;
+CREATE TABLE linnad(
+linnID int PRIMARY KEY identity(1,1),
+linnNimi varchar(30) unique,
+elanikeArv int not null,
+maakond varchar(25)
+);
+-- Protsesduur, mis lisab (INSERT) tabelisse andmed ja kohe näitab (SELECT) tabeli
+CREATE PROCEDURE lisaLinn
+@linnNimi varchar(30),
+@elanikeArv int,
+@maakond varchar(25)
+AS
+BEGIN
+INSERT INTO linnad(linnNimi, elanikeArv, maakond)
+VALUES (@linnNimi, @elanikeArv, @maakond);
+SELECT * FROM linnad;
+END;
