@@ -113,3 +113,32 @@ INSERT INTO linnad(linnNimi, elanikeArv, maakond)
 VALUES (@linnNimi, @elanikeArv, @maakond);
 SELECT * FROM linnad;
 END;
+
+-- protseduur, mis kustutab tabelist id järgi
+CREATE PROCEDURE kustutaLinn
+@id int
+AS
+BEGIN
+SELECT * FROM linnad;
+DELETE FROM linnad WHERE linnID=@id;
+SELECT * FROM linnad;
+END
+--kutse
+
+EXEC kustutaLinn 2;
+EXEC kustutaLinn @id=3;
+
+-- protseduur mis uuendab tabeli ja suurendab elanike arv 10%
+CREATE Procedure uuendaLinn
+@arv decimal(5,2)
+AS
+BEGIN
+SELECT * FROM linnad;
+UPDATE linnad SET elanikeArv=elanikeArv*@arv;
+SELECT * FROM linnad;
+END
+
+--kutse 
+EXEC uuendaLinn 0.01;
+UPDATE linnad SET elanikeArv=100000 WHERE linnID=2;
+DROP Procedure uuendaLinn;
