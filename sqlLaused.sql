@@ -142,3 +142,12 @@ END
 EXEC uuendaLinn 0.01;
 UPDATE linnad SET elanikeArv=100000 WHERE linnID=2;
 DROP Procedure uuendaLinn;
+
+--tund 4
+CREATE Procedure film1taht
+@id int
+AS
+BEGIN
+SELECT filmNimetus, pikkus FROM film
+WHERE filmNimetus LIKE CONCAT(taht, '%');
+END
